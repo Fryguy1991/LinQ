@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">LinQ</string>
+
+    <!-- Service Descriptions -->
+    <string name="access_service_description">Service used to keep SocialQ access token up to date</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Login Fragment Strings -->
+    <string name="login">Login</string>
+
+    <!-- Add/Edit Link Strings -->
+    <string name="new_link">New Link</string>
+    <string name="edit_link">Edit Link</string>
+
+    <!-- Settings String -->
+    <string name="settings">Settings</string>
+    <string name="enforce_links">Enforce Links</string>
+    <string name="remove_all_links">Remove All Links</string>
+    <string name="log_out">Log Out</string>
+    <string name="logged_in_as">Logged In As: %1$s</string>
+    <string name="invalid_user">Invalid User</string>
+</resources>

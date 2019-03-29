@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Spacing Dimens -->
+    <dimen name="screen_edge_margin">16dp</dimen>
+    <dimen name="default_margin">8dp</dimen>
+    <dimen name="half_default_margin">4dp</dimen>
+    <dimen name="default_margin_x2">16dp</dimen>
+
+    <!-- Floating Action Buttons -->
+    <dimen name="fab_size">56dp</dimen>
+    <dimen name="fab_icon_size">24dp</dimen>
+
+    <!-- Text Size Dimens -->
+    <dimen name="small_text">10sp</dimen>
+    <dimen name="medium_text">20sp</dimen>
+    <dimen name="medium_text_2">15sp</dimen>
+    <dimen name="medium_text_3">25sp</dimen>
+    <dimen name="large_text">30sp</dimen>
+</resources>

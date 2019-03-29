@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".SettingsFragment">
+
+    <TextView
+            android:id="@+id/tv_enforce_links_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/switch_enforce_links"
+            android:layout_marginTop="@dimen/screen_edge_margin"
+            android:layout_marginStart="@dimen/screen_edge_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:text="@string/enforce_links"
+            android:textSize="@dimen/medium_text"/>
+
+
+    <Switch
+            android:id="@+id/switch_enforce_links"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/tv_enforce_links_label"
+            app:layout_constraintBottom_toBottomOf="@id/tv_enforce_links_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/screen_edge_margin"
+            android:checked="@bool/enforce_links_default_value"/>
+
+    <TextView
+            android:id="@+id/tv_remove_all_links"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_enforce_links_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="@dimen/medium_text"
+            android:text="@string/remove_all_links"
+            android:layout_marginTop="@dimen/default_margin_x2"
+            android:layout_marginStart="@dimen/screen_edge_margin"
+            android:layout_marginEnd="@dimen/screen_edge_margin"/>
+
+    <TextView
+            android:id="@+id/tv_log_out_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_remove_all_links"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="@dimen/medium_text"
+            android:text="@string/log_out"
+            android:layout_marginTop="@dimen/default_margin_x2"
+            android:layout_marginStart="@dimen/screen_edge_margin"
+            android:layout_marginEnd="@dimen/screen_edge_margin"/>
+
+    <TextView
+            android:id="@+id/tv_logged_in_as"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_log_out_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="@dimen/medium_text_2"
+            android:text="@string/logged_in_as"
+            android:textStyle="italic"
+            android:layout_marginStart="@dimen/screen_edge_margin"
+            android:layout_marginEnd="@dimen/screen_edge_margin"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
