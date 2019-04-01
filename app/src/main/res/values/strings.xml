@@ -3,6 +3,10 @@
 
     <!-- Service Descriptions -->
     <string name="access_service_description">Service used to keep SocialQ access token up to date</string>
+    <string name="linq_service_description">Service used to inject track links into Spotify queue</string>
+
+    <string name="linq_service_name">LinQ</string>
+    <string name="linq_service_notification_description">Enforcing track links</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

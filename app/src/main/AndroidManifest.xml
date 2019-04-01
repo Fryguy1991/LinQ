@@ -2,7 +2,8 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="com.chrisfry.linq">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application
             android:name=".userinterface.App"
@@ -40,5 +41,10 @@
                  android:description="@string/access_service_description"
                  android:permission="android.permission.BIND_JOB_SERVICE"
                  android:exported="false" />
+
+        <!-- Service for injecting track links into Spotify queue -->
+        <service android:name=".services.LinqService"
+                 android:description="@string/linq_service_description"
+                 android:exported="false"/>
     </application>
 </manifest>

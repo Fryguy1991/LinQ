@@ -2,15 +2,15 @@ package com.chrisfry.linq.userinterface.activites
 
 import android.app.job.JobInfo
 import android.app.job.JobScheduler
-import android.content.ComponentName
-import android.content.Context
-import android.content.Intent
+import android.content.*
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
@@ -23,6 +23,7 @@ import com.chrisfry.linq.SplashFragment
 import com.chrisfry.linq.business.database.AppDatabase
 import com.chrisfry.linq.business.models.AccessModel
 import com.chrisfry.linq.services.AccessService
+import com.chrisfry.linq.services.LinqService
 import com.chrisfry.linq.userinterface.App
 import com.chrisfry.linq.userinterface.fragments.LoginFragment
 import com.spotify.sdk.android.authentication.AuthenticationClient
@@ -52,9 +53,28 @@ class BaseActivity : AppCompatActivity(), LoginFragment.LoginFragmentListener, N
 
     private var authorizationRetries = 0
 
+    // Intent for starting LinQ service (in order to start/stop)
+    private lateinit var linqServiceIntent: Intent
+
+    // TODO: Only listening for access so we can start the LinQ service (TEST), eventually remove this
+    private val accessBroadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            if (intent != null && context != null) {
+                if (intent.action == AppConstants.BR_INTENT_ACCESS_TOKEN_UPDATED) {
+                    linqServiceIntent = Intent(this@BaseActivity, LinqService::class.java)
+                    ContextCompat.startForegroundService(this@BaseActivity, linqServiceIntent)
+
+                    LocalBroadcastManager.getInstance(this@BaseActivity).unregisterReceiver(this)
+                }
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(accessBroadcastReceiver, IntentFilter(AppConstants.BR_INTENT_ACCESS_TOKEN_UPDATED))
 
         (application as App).appComponent.inject(this)
 
@@ -194,6 +214,9 @@ class BaseActivity : AppCompatActivity(), LoginFragment.LoginFragmentListener, N
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
     override fun onDestroy() {
+        // Shutdown service
+        stopService(linqServiceIntent)
+
         // Close database before exiting application
         appDatabase.close()
 

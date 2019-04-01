@@ -10,6 +10,7 @@ class AppConstants {
 
         // Service ID's
         const val ACCESS_SERVICE_ID = 0
+        const val LINQ_SERVICE_ID = 1
 
         // Database constants
         const val DATABASE_NAME = "TrackLinks.db"
@@ -37,5 +38,10 @@ class AppConstants {
         const val SP_ENFORCE_LINKS_KEY = "stored_enforce_links"
 
         const val EMPTY_STRING = ""
+
+        // Spotify Values
+        const val TRACK_URI_FORMAT = "spotify:track:%s"
+
+        const val SKIP_SEEK_POSITION_OFFSET_MS = 1L
     }
 }
